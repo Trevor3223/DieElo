@@ -4,115 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E.D</title>
-     <style>
+    
+    <!-- Importando uma fonte bonita e romântica do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        /* Animação de Fade-In para o site inteiro */
+        @keyframes fadeInSite {
+            from { opacity: 0; filter: blur(5px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        /* Animação suave para subida dos elementos */
+        @keyframes sunbidaSuave {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Animação de pulso romântico (Coração batendo) */
+        @keyframes pulsar {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
-            background: linear-gradient(to bottom, rgb(75, 47, 177), rgb(131, 6, 173));
+            background: linear-gradient(to bottom, #3b1e54, #1a0b2e, #4a154b);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             overflow-x: hidden;
-        }
-        h1 {
-            color: rgb(0, 0, 0);
+            animation: fadeInSite 2.5s ease-out- Durand;
             font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
+        }
+
+        h1 {
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+            font-family: 'Great Vibes', cursive; /* Fonte super romântica */
+            font-size: 3.5rem;
             text-align: center;
+            margin-bottom: 30px;
             margin-top: 20px;
+            animation: sunbidaSuave 1.5s ease-out;
         }
 
         .imagen-container {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: nowrap;
-            gap: 10px;
-            margin-top: 20px;
-            padding: 0 10px;
-            box-sizing: border-box;
+            gap: 40px;
+            width: 90%;
+            max-width: 1200px;
+            animation: sunbidaSuave 2s ease-out;
         }
+
+        /* Moldura romântica para as fotos laterais */
         img {
-            width: 23%;
-            max-width: 270px;
-            height: auto;
-            aspect-ratio: 270 / 620;
+            width: 260px;
+            height: 580px;
             object-fit: cover;
             cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s, box-shadow 0.5s;
         }
 
-        .img2 {
-            width: 23%;
-            max-width: 270px;
-            height: auto;
-            aspect-ratio: 270 / 620;
-            object-fit: cover;
-            cursor: pointer;
+        img:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.4);
         }
 
+        .img2:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        /* Central de Destaque do Carrossel */
         .carrossel {
             text-align: center;
-            width: 44%;
-            max-width: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: pulsar 4s infinite ease-in-out; /* O carrossel "pulsa" como um coração */
         }
+
         .carrossel img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 400 / 500;
-            margin: 0;
+            width: 380px;
+            height: 480px;
+            border-radius: 10px;
             cursor: default;
+            box-shadow: none;
         }
+
+        .carrossel img:hover {
+            transform: none;
+        }
+
+        /* Botões Estilizados */
         .carrossel button {
             display: inline-block;
-            margin: 15px 4px 0 4px;
-            padding: 10px 20px;
+            margin: 20px 10px 0 10px;
+            padding: 12px 28px;
             cursor: pointer;
-            background-color: #ff4d6d;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0);
-            background-size: 8px 8px;
+            background: linear-gradient(45deg, #ff4d6d, #ff758f);
             color: white;
             font-weight: bold;
+            font-family: 'Playfair Display', serif;
             border: none;
-            border-radius: 20px; 
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s;
+            border-radius: 25px; 
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .carrossel button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+            background: linear-gradient(45deg, #ff758f, #ff4d6d);
         }
 
         .carrossel button:active {
             transform: scale(0.95);
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.6rem;
-            }
-            .carrossel button {
-                padding: 6px 12px;
-                font-size: 0.75rem;
-                margin: 8px 2px 0 2px;
-            }
+        /* Pequenos corações flutuantes no fundo (detalhe sutil) */
+        .decoracao {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.2);
+            font-size: 24px;
+            pointer-events: none;
+            animation: flutuar 6s infinite linear;
+        }
+
+        @keyframes flutuar {
+            0% { transform: translateY(10vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-90vh) rotate(360deg); opacity: 0; }
         }
     </style>
+</head>
+<body>
 
-    </head>
-    <body>
+    <!-- Corações decorativos que flutuam ao fundo -->
+    <div class="decoracao" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="decoracao" style="left: 25%; animation-delay: 3s; font-size: 15px;">✨</div>
+    <div class="decoracao" style="left: 80%; animation-delay: 1.5s;">❤️</div>
+    <div class="decoracao" style="left: 90%; animation-delay: 4s; font-size: 18px;">✨</div>
+
     <h1>Diego e Eloah</h1>
 
     <audio id="musica-esquerda" src="loversrock.mp3"></audio>
     <audio id="musica-direita" src="yunglixo.mp3"></audio>
 
     <div class="imagen-container">
+        <!-- Foto Esquerda -->
+        <img src="tvgirlimg.jpg" alt="Tv Girl" onclick="tocarMusica('esquerda')">
 
-    <img src="tvgirlimg.jpg" alt="Tv Girl" onclick="tocarMusica('esquerda')">
-
-    <div class="carrossel">
+        <!-- Carrossel Centralizado -->
+        <div class="carrossel">
             <img id="foto-carrossel" src="foto1.jpeg" alt="Carrossel">
             <br>
             <button onclick="mudar(-1)">Voltar</button>
             <button onclick="mudar(1)">Avançar</button>
         </div>
 
-    <img src="yung.webp" alt="Mimikyu" class="img2" onclick="tocarMusica('direita')">
-     
+        <!-- Foto Direita -->
+        <img src="yung.webp" alt="Mimikyu" class="img2" onclick="tocarMusica('direita')">
     </div>
 
     <script>
@@ -150,5 +212,5 @@
             }
         }
     </script>
-    </body>
+</body>
 </html>
