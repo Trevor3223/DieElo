@@ -7,8 +7,10 @@
      <style>
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(to bottom, rgb(75, 47, 177), rgb(131, 6, 173));
+            font-family: sans-serif;
+            padding-bottom: 30px;
         }
         h1 {
             color: rgb(0, 0, 0);
@@ -17,51 +19,54 @@
             font-weight: 400;
             text-align: center;
             margin-top: 20px;
+            font-size: 2.5rem;
         }
 
         .imagen-container {
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            
-        }
-        img {
-           
-            width: 270px;
-            height: 620px;
-            object-fit: cover;
-            margin-left: 15px;
-            cursor: pointer; /* Adiciona a mãozinha ao passar o mouse */
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto 0 auto;
+            padding: 0 15px;
         }
 
-        .img2 {
+        .img-lateral {
             width: 270px;
             height: 620px;
             object-fit: cover;
-            margin-left: 0;
-            margin-right: 15px;
-            cursor: pointer; /* Adiciona a mãozinha ao passar o mouse */
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .img-lateral:hover {
+            transform: scale(1.02);
         }
 
         .carrossel {
             text-align: center;
+            max-width: 100%;
         }
         .carrossel img {
             width: 400px;
+            max-width: 100%;
             height: 500px;
-            margin: 0;
-            cursor: default; /* Mantém a seta normal no carrossel */
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .carrossel button {
             display: inline-block;
             margin: 15px 8px 0 8px;
-            padding: 10px 20px;
+            padding: 10px 24px;
             cursor: pointer;
-            
             background-color: #ff4d6d;
             background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0);
             background-size: 8px 8px;
-            
             color: white;
             font-weight: bold;
             border: none;
@@ -69,9 +74,31 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
             transition: transform 0.2s;
         }
-
         .carrossel button:active {
             transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .imagen-container {
+                flex-direction: column;
+                justify-content: center;
+            }
+            .img-lateral {
+                width: 90%;
+                height: 450px;
+            }
+            .carrossel {
+                order: -1;
+                width: 90%;
+                margin-bottom: 20px;
+            }
+            .carrossel img {
+                width: 100%;
+                height: 400px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 
@@ -79,21 +106,21 @@
     <body>
     <h1>Diego e Eloah</h1>
 
-    <audio id="musica-esquerda" src="loversrock.mp3"></audio>
-    <audio id="musica-direita" src="yunglixo.mp3"></audio>
+    <audio id="musica-esquerda" src="yunglixo.mp3"></audio>
+    <audio id="musica-direita" src="loversrock.mp3"></audio>
 
     <div class="imagen-container">
 
-    <img src="tvgirlimg.jpg" alt="Tv Girl" onclick="tocarMusica('esquerda')">
+        <img src="tvgirlimg.jpg" alt="Tv Girl" class="img-lateral" onclick="tocarMusica('esquerda')">
 
-    <div class="carrossel">
+        <div class="carrossel">
             <img id="foto-carrossel" src="foto1.jpeg" alt="Carrossel">
             <br>
             <button onclick="mudar(-1)">Voltar</button>
             <button onclick="mudar(1)">Avançar</button>
         </div>
 
-    <img src="yung.webp" alt="Mimikyu" class="img2" onclick="tocarMusica('direita')">
+        <img src="yung.webp" alt="Yung" class="img-lateral" onclick="tocarMusica('direita')">
      
     </div>
 
@@ -112,22 +139,18 @@
 
         function tocarMusica(lado) {
             if (lado === 'esquerda') {
-                // Se a outra estiver tocando, pausa ela
                 somDireita.pause();
                 somDireita.currentTime = 0; 
 
-                // Liga ou pausa a música da esquerda
                 if (somEsquerda.paused) {
                     somEsquerda.play();
                 } else {
                     somEsquerda.pause();
                 }
             } else if (lado === 'direita') {
-                // Se a outra estiver tocando, pausa ela
                 somEsquerda.pause();
                 somEsquerda.currentTime = 0;
 
-                // Liga ou pausa a música da direita
                 if (somDireita.paused) {
                     somDireita.play();
                 } else {
