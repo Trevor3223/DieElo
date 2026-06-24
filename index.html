@@ -16,7 +16,7 @@
         }
 
         /* Animação suave para subida dos elementos */
-        @keyframes sunbidaSuave {
+        @keyframes subidaSuave {
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
@@ -24,7 +24,7 @@
         /* Animação de pulso romântico (Coração batendo) */
         @keyframes pulsar {
             0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+            50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
 
@@ -37,32 +37,33 @@
             align-items: center;
             justify-content: center;
             overflow-x: hidden;
-            animation: fadeInSite 2.5s ease-out- Durand;
+            animation: fadeInSite 2.5s ease-out;
             font-family: 'Playfair Display', serif;
+            box-sizing: border-box;
         }
 
         h1 {
             color: #fff;
             text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
-            font-family: 'Great Vibes', cursive; /* Fonte super romântica */
+            font-family: 'Great Vibes', cursive;
             font-size: 3.5rem;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             margin-top: 20px;
-            animation: sunbidaSuave 1.5s ease-out;
+            animation: subidaSuave 1.5s ease-out;
         }
 
         .imagen-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            width: 90%;
+            gap: 30px;
+            width: 95%;
             max-width: 1200px;
-            animation: sunbidaSuave 2s ease-out;
+            animation: subidaSuave 2s ease-out;
         }
 
-        /* Moldura romântica para as fotos laterais */
+        /* Configuração Padrão (PC) */
         img {
             width: 260px;
             height: 580px;
@@ -82,7 +83,6 @@
             transform: scale(1.05) rotate(1deg);
         }
 
-        /* Central de Destaque do Carrossel */
         .carrossel {
             text-align: center;
             background: rgba(255, 255, 255, 0.05);
@@ -91,7 +91,7 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: pulsar 4s infinite ease-in-out; /* O carrossel "pulsa" como um coração */
+            animation: pulsar 4s infinite ease-in-out;
         }
 
         .carrossel img {
@@ -106,7 +106,6 @@
             transform: none;
         }
 
-        /* Botões Estilizados */
         .carrossel button {
             display: inline-block;
             margin: 20px 10px 0 10px;
@@ -125,14 +124,12 @@
         .carrossel button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
-            background: linear-gradient(45deg, #ff758f, #ff4d6d);
         }
 
         .carrossel button:active {
             transform: scale(0.95);
         }
 
-        /* Pequenos corações flutuantes no fundo (detalhe sutil) */
         .decoracao {
             position: absolute;
             color: rgba(255, 77, 109, 0.2);
@@ -146,11 +143,55 @@
             50% { opacity: 0.5; }
             100% { transform: translateY(-90vh) rotate(360deg); opacity: 0; }
         }
+
+        /* ==========================================================================
+           MUDANÇA AQUI: AJUSTES EXCLUSIVOS PARA CELULAR (TELAS ATÉ 768px)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Diminui um pouco o título para não quebrar linha */
+                margin-bottom: 15px;
+            }
+
+            .imagen-container {
+                gap: 8px; /* Diminui o espaçamento entre as fotos no celular */
+                width: 100%;
+                padding: 0 5px;
+            }
+
+            /* Fotos das Laterais se adaptam à largura da tela */
+            img {
+                width: 23vw; 
+                height: 52vw;
+                border-radius: 8px;
+            }
+
+            /* Container do carrossel do meio */
+            .carrossel {
+                padding: 8px;
+                border-radius: 12px;
+            }
+
+            /* Foto do meio se adapta proporcionalmente */
+            .carrossel img {
+                width: 38vw;
+                height: 48vw;
+                border-radius: 6px;
+            }
+
+            /* Ajuste dos botões no celular para não sumirem */
+            .carrossel button {
+                margin: 10px 3px 0 3px;
+                padding: 6px 12px;
+                font-size: 0.75rem;
+                border-radius: 15px;
+                box-shadow: 0 2px 8px rgba(255, 77, 109, 0.4);
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Corações decorativos que flutuam ao fundo -->
     <div class="decoracao" style="left: 10%; animation-delay: 0s;">❤️</div>
     <div class="decoracao" style="left: 25%; animation-delay: 3s; font-size: 15px;">✨</div>
     <div class="decoracao" style="left: 80%; animation-delay: 1.5s;">❤️</div>
@@ -162,10 +203,10 @@
     <audio id="musica-direita" src="yunglixo.mp3"></audio>
 
     <div class="imagen-container">
-        <!-- Foto Esquerda -->
+        <!-- Foto Esquerda (TV Girl) -->
         <img src="tvgirlimg.jpg" alt="Tv Girl" onclick="tocarMusica('esquerda')">
 
-        <!-- Carrossel Centralizado -->
+        <!-- Carrossel Central -->
         <div class="carrossel">
             <img id="foto-carrossel" src="foto1.jpeg" alt="Carrossel">
             <br>
@@ -173,7 +214,7 @@
             <button onclick="mudar(1)">Avançar</button>
         </div>
 
-        <!-- Foto Direita -->
+        <!-- Foto Direita (Mimikyu) -->
         <img src="yung.webp" alt="Mimikyu" class="img2" onclick="tocarMusica('direita')">
     </div>
 
