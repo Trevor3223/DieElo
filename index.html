@@ -9,8 +9,6 @@
             margin: 0;
             min-height: 100vh;
             background: linear-gradient(to bottom, rgb(75, 47, 177), rgb(131, 6, 173));
-            font-family: sans-serif;
-            padding-bottom: 30px;
             overflow-x: hidden;
         }
         h1 {
@@ -20,35 +18,35 @@
             font-weight: 400;
             text-align: center;
             margin-top: 20px;
-            font-size: 2.5rem;
         }
 
         .imagen-container {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             flex-wrap: nowrap;
             gap: 10px;
-            max-width: 1200px;
-            margin: 20px auto 0 auto;
+            margin-top: 20px;
             padding: 0 10px;
             box-sizing: border-box;
         }
-
-        .img-lateral {
+        img {
             width: 23%;
             max-width: 270px;
             height: auto;
             aspect-ratio: 270 / 620;
             object-fit: cover;
             cursor: pointer;
-            border-radius: 8px;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .img-lateral:hover {
-            transform: scale(1.02);
+
+        .img2 {
+            width: 23%;
+            max-width: 270px;
+            height: auto;
+            aspect-ratio: 270 / 620;
+            object-fit: cover;
+            cursor: pointer;
         }
 
         .carrossel {
@@ -60,15 +58,13 @@
             width: 100%;
             height: auto;
             aspect-ratio: 400 / 500;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0;
+            cursor: default;
         }
         .carrossel button {
             display: inline-block;
-            margin: 10px 4px 0 4px;
-            padding: 8px 16px;
-            font-size: 0.9rem;
+            margin: 15px 4px 0 4px;
+            padding: 10px 20px;
             cursor: pointer;
             background-color: #ff4d6d;
             background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0);
@@ -80,6 +76,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
             transition: transform 0.2s;
         }
+
         .carrossel button:active {
             transform: scale(0.95);
         }
@@ -87,12 +84,11 @@
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.6rem;
-                margin-top: 15px;
             }
             .carrossel button {
                 padding: 6px 12px;
                 font-size: 0.75rem;
-                margin: 6px 2px 0 2px;
+                margin: 8px 2px 0 2px;
             }
         }
     </style>
@@ -101,21 +97,21 @@
     <body>
     <h1>Diego e Eloah</h1>
 
-    <audio id="musica-esquerda" src="yunglixo.mp3"></audio>
-    <audio id="musica-direita" src="loversrock.mp3"></audio>
+    <audio id="musica-esquerda" src="loversrock.mp3"></audio>
+    <audio id="musica-direita" src="yunglixo.mp3"></audio>
 
     <div class="imagen-container">
 
-        <img src="tvgirlimg.jpg" alt="Tv Girl" class="img-lateral" onclick="tocarMusica('esquerda')">
+    <img src="tvgirlimg.jpg" alt="Tv Girl" onclick="tocarMusica('esquerda')">
 
-        <div class="carrossel">
+    <div class="carrossel">
             <img id="foto-carrossel" src="foto1.jpeg" alt="Carrossel">
             <br>
             <button onclick="mudar(-1)">Voltar</button>
             <button onclick="mudar(1)">Avançar</button>
         </div>
 
-        <img src="yung.webp" alt="Yung" class="img-lateral" onclick="tocarMusica('direita')">
+    <img src="yung.webp" alt="Mimikyu" class="img2" onclick="tocarMusica('direita')">
      
     </div>
 
