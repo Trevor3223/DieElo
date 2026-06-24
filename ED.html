@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.D</title>
+     <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgb(75, 47, 177), rgb(131, 6, 173));
+        }
+        h1 {
+            color: rgb(0, 0, 0);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .imagen-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            
+        }
+        img {
+           
+            width: 270px;
+            height: 620px;
+            object-fit: cover;
+            margin-left: 15px;
+            cursor: pointer; /* Adiciona a mãozinha ao passar o mouse */
+        }
+
+        .img2 {
+            width: 270px;
+            height: 620px;
+            object-fit: cover;
+            margin-left: 0;
+            margin-right: 15px;
+            cursor: pointer; /* Adiciona a mãozinha ao passar o mouse */
+        }
+
+        .carrossel {
+            text-align: center;
+        }
+        .carrossel img {
+            width: 400px;
+            height: 500px;
+            margin: 0;
+            cursor: default; /* Mantém a seta normal no carrossel */
+        }
+        .carrossel button {
+            display: inline-block;
+            margin: 15px 8px 0 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            
+            background-color: #ff4d6d;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0);
+            background-size: 8px 8px;
+            
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s;
+        }
+
+        .carrossel button:active {
+            transform: scale(0.95);
+        }
+    </style>
+
+    </head>
+    <body>
+    <h1>Diego e Eloah</h1>
+
+    <audio id="musica-esquerda" src="loversrock.mp3"></audio>
+    <audio id="musica-direita" src="yunglixo.mp3"></audio>
+
+    <div class="imagen-container">
+
+    <img src="tvgirlimg.jpg" alt="Tv Girl" onclick="tocarMusica('esquerda')">
+
+    <div class="carrossel">
+            <img id="foto-carrossel" src="foto1.jpeg" alt="Carrossel">
+            <br>
+            <button onclick="mudar(-1)">Voltar</button>
+            <button onclick="mudar(1)">Avançar</button>
+        </div>
+
+    <img src="yung.webp" alt="Mimikyu" class="img2" onclick="tocarMusica('direita')">
+     
+    </div>
+
+    <script>
+        const fotos = ["foto1.jpeg", "foto2.jpeg", "foto3.jpeg", "foto4.jpeg", "foto5.jpeg", 
+        "foto6.jpeg", "foto7.jpeg", "foto8.jpeg", "foto9.jpeg", "foto10.jpeg", "foto11.jpeg", "foto12.jpeg", "foto13.jpeg"]; 
+        let i = 0;
+
+        function mudar(direcao) {
+            i = (i + direcao + fotos.length) % fotos.length;
+            document.getElementById("foto-carrossel").src = fotos[i];
+        }
+
+        const somEsquerda = document.getElementById('musica-esquerda');
+        const somDireita = document.getElementById('musica-direita');
+
+        function tocarMusica(lado) {
+            if (lado === 'esquerda') {
+                // Se a outra estiver tocando, pausa ela
+                somDireita.pause();
+                somDireita.currentTime = 0; 
+
+                // Liga ou pausa a música da esquerda
+                if (somEsquerda.paused) {
+                    somEsquerda.play();
+                } else {
+                    somEsquerda.pause();
+                }
+            } else if (lado === 'direita') {
+                // Se a outra estiver tocando, pausa ela
+                somEsquerda.pause();
+                somEsquerda.currentTime = 0;
+
+                // Liga ou pausa a música da direita
+                if (somDireita.paused) {
+                    somDireita.play();
+                } else {
+                    somDireita.pause();
+                }
+            }
+        }
+    </script>
+    </body>
+</html>
